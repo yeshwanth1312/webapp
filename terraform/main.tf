@@ -52,6 +52,10 @@ resource "aws_launch_configuration" "example" {
               apt-get update
               apt-get install -y docker-ce
               usermod -aG docker ubuntu
+
+            #Pull image and run
+            docker pull yeshwanthjavvaji/webapp-goodrx:latest
+            docker run -itd -p 80:80 yeshwanthjavvaji/webapp-goodrx:latest
               EOF
   lifecycle {
     create_before_destroy = true
